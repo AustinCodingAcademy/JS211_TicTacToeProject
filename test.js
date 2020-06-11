@@ -110,7 +110,9 @@ let createPandBtn = () => {
   btn.addEventListener('click', newGame);
   btn.type = "button";
   btn.name = "button";
-  //btn.classList.add("btn btn-primary btn-lg");
+  btn.classList.add("btn");
+  btn.classList.add("btn-primary");
+  btn.classList.add("btn-lg");
   document.body.appendChild(btn);
 }
 
