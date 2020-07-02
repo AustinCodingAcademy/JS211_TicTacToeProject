@@ -59,9 +59,9 @@ const horizontalWin = () => {
 const verticalWin = () => {
   // Your code here to check for vertical wins
   if(board[0][0] === board[1][0] && board[0][0] === board[2][0]){
-    if(board[0][0] == "X" || board[0][0] == "O"){
+    //if(board[0][0] == "X" || board[0][0] == "O"){
       return true;
-    }
+   // }
   }
   else if(board[0][1] === board[1][1] && board[0][1] === board[2][1]){
     return true;
@@ -91,7 +91,7 @@ const diagonalWin = () => {
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
   if(horizontalWin() || verticalWin() || diagonalWin()) {
-    console.log(`Winner! ${playerTurn}`)
+    //console.log(`Winner! ${playerTurn}`)
     //resetBoard();
     return true;
   }
