@@ -32,25 +32,100 @@ const printBoard = () => {
   console.log('2 ' + board[2].join(' | '));
 }
 
+const resetBoard = () => {
+  board = [
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' ']
+  ];
+}
+
 const horizontalWin = () => {
   // Your code here to check for horizontal wins
+  if(board[0][0] === board[0][1] && board[0][0] === board[0][2]){
+    return true;
+  }
+  else if(board[1][0] === board[1][1] && board[1][0] === board[1][2]){
+    return true;
+  }
+  else if(board[2][0] === board[2][1] && board[2][0] === board[2][2]){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 const verticalWin = () => {
   // Your code here to check for vertical wins
+  if(board[0][0] === board[1][0] && board[0][0] === board[2][0]){
+    if(board[0][0] == "X" || board[0][0] == "O"){
+      return true;
+    }
+  }
+  else if(board[0][1] === board[1][1] && board[0][1] === board[2][1]){
+    return true;
+  }
+  else if(board[0][2] === board[1][2] && board[0][2] === board[2][2]){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 const diagonalWin = () => {
   // Your code here to check for diagonal wins
+  if(board[0][0] === board[1][1] && board[0][0] === board[2][2]){
+    return true;
+  }
+  else if(board[0][2] === board[1][1] && board[0][2] === board[2][0]){
+    return true;
+  }
+  else {
+    return false;
+  }
+
 }
 
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
+  if(horizontalWin() || verticalWin() || diagonalWin()) {
+    console.log(`Winner! ${playerTurn}`)
+    //resetBoard();
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+const changeMarker = () => {
+  // ternary operator: if it's an X make it an O, if O make it an X
+  playerTurn = playerTurn === "X" ? "O" : "X"
+}
+ 
+const validInput = (input) => {
+  if (input == 0 || input == 1 || input == 2) {
+    return true;
+  }
+  else {
+    console.log( "Invaild Input!  Please choose 0, 1, or 2")
+    return false;
+  }
 }
 
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
   // then check for a win
+  if (validInput(row) && validInput(column)){
+    board[row][column] = playerTurn;
+    checkForWin();
+    changeMarker();
+  }
+  else {
+    getPrompt();
+  }
 }
 
 const getPrompt = () => {
