@@ -33,7 +33,7 @@ const printBoard = () => {
 }
 
 const horizontalWin = () => {
-  // Your code here to check for horizontal wins
+  // Your code here to check for horizontal wins- START CODING LADY!!!!
 }
 
 const verticalWin = () => {
