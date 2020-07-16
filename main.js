@@ -90,16 +90,8 @@ const ticTacToe = (row, column) => {
   // then check for a win
   board[row][column] = playerTurn
 
-  changeMarker()
+ checkForWin()
 
-  // it('should place mark on the board', () => {
-  //   ticTacToe(1, 1);
-  //   assert.deepEqual(board, [ [' ', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' '] ]);
-  // });
-  // it('should alternate between players', () => {
-  //   ticTacToe(0, 0);
-  //   assert.deepEqual(board, [ ['O', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' '] ]);
-  // });
 }
 
 const changeMarker = () => {
@@ -114,6 +106,7 @@ const checkForWin = () => {
   // Your code here call each of the check for types of wins
   if(horizontalWin() || verticalWin() || diagonalWin()) {
     console.log(`Player ${playerTurn} won!`)
+    return true
   } else {
       changeMarker()
     }
