@@ -1,8 +1,8 @@
 'use strict';
 
-// brings in the assert module for unit testing
-const assert = require('assert');
-// brings in the readline module to access the command line
+// brings in the assert module for unit testing 
+const assert = require('assert'); 
+// brings in the readline module to access the command line 
 const readline = require('readline');
 // use the readline module to print out to the command line
 const rl = readline.createInterface({
