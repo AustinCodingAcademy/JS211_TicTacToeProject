@@ -103,17 +103,17 @@ const diagonalWin = () => {
 }
 
 
+
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
   board[row][column] = playerTurn
-  changeMarker()
-  turn += 1;
-  if (turn >= 5){
-    checkForWin()
-  }else {
-    turn +=1
-  }
   
+  changeMarker()
+  if (turn >=4){
+    checkForWin()
+  } else {
+    turn++;
+  }
      
 }
   // it('should place mark on the board', () => {
@@ -125,7 +125,14 @@ const ticTacToe = (row, column) => {
   //   assert.deepEqual(board, [ ['O', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' '] ]);
   // });
 
- 
+ const checkForWin = () => {
+  if(horizontalWin() || verticalWin() || diagonalWin()){
+    console.log(`Player ${playerTurn} won!`)
+    return true
+  } else {
+    ticTacToe()
+  }
+
   
   
 
@@ -134,7 +141,7 @@ const ticTacToe = (row, column) => {
 
 
 
-const checkForWin = () => {
+
   // it('should detect a win', () => {
   //   assert.equal(checkForWin(), true);
   // });
@@ -181,6 +188,11 @@ if (typeof describe === 'function') {
       assert.equal(diagonalWin(), true);
     });
     it('should detect a win', () => {
+      ticTacToe(0, 0)
+      ticTacToe(0, 1)
+      ticTacToe(1, 1)
+      ticTacToe(0, 2)
+      ticTacToe(2, 2)
       assert.equal(checkForWin(), true);
     });
   });
