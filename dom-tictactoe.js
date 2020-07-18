@@ -35,7 +35,7 @@ const addMarker = (id) => {
   // .getElementById(id)
   // document
   // .innerHTML 
-  
+
   // Arrange the above pieces into one a single line of code
   // to add an X or O to the board to the DOM so it can be scene on the screen.
 }
@@ -45,11 +45,12 @@ const updateBoard = (id) => {
   // parses the id string into a number then captures the first and last part the newly create number as row & column
   const row = parseInt(id.charAt(0))
   const column = parseInt(id.charAt(2)) 
-
   console.log(`you clicked the sq at ${row} and ${column}`)
   console.log(board)
 
   // @TODO, Your code here: use the above information to change the board variable(array of arrays)
+  board[row][column] = currentMarker
+  
   // HINT: in your browser open up the dev tools -> console
 }
 
@@ -61,7 +62,7 @@ const checkForWin = () => {
   } else {
     // if no win, change the marker from X to O, or O to X for the next player.
     changeMarker()
-  }
+  } 
 }
 
 const horizontalWin = () => {
@@ -121,6 +122,12 @@ const resetBoard = () => {
   }
   
   // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
+  board = [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""]
+]
+
 }
 
 // **BONUSES**
