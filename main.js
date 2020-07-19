@@ -4,6 +4,7 @@
 const assert = require('assert'); 
 // brings in the readline module to access the command line 
 const readline = require('readline');
+const { get } = require('http');
 // use the readline module to print out to the command line
 const rl = readline.createInterface({
   input: process.stdin,
@@ -21,6 +22,7 @@ let board = [
 
 // assigns the first mark as 'X'
 // using let because the variable is expected to change from 'X' to 'O' and back
+let winnerMarker = 'O'; 
 let playerTurn = 'X';
 let turn = 0;
 
@@ -36,16 +38,13 @@ const printBoard = () => {
   console.log('2 ' + board[2].join(' | '));
 }
 
-const changeMarker = () => {
-  if(playerTurn === "X"){
-    playerTurn = "O"
-  } else {
-    playerTurn = "X"
-  }
 
+const changeMarker = () => {
+  playerTurn = playerTurn === "X" ? "O" : "X"
+  winnerMarker = winnerMarker === "O" ? "X" : "O"
 }
 
-// const turnCounter
+
 
 const horizontalWin = () => {
   if ((board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") || (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")) {
@@ -83,9 +82,8 @@ const diagonalWin = () => {
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
+    console.log("************ " + winnerMarker +  " Wins! *************")
     return true
-  } else {
-    ticTacToe()
   }
   
 }
@@ -93,13 +91,11 @@ const checkForWin = () => {
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
   // then check for a win
-  
   board[row][column] = playerTurn
   changeMarker()
+  turn++
   if (turn >= 5) {
     checkForWin()
-  } else {
-    turn++;
   }
 }
 
