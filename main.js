@@ -100,7 +100,6 @@ const getPrompt = () => {
   });
 }
 
-
 // Unit Tests
 // You use them run the command: npm test main.js
 // to close them ctrl + C
@@ -128,14 +127,6 @@ if (typeof describe === 'function') {
       assert.equal(diagonalWin(), true);
     });
     it('should detect a win', () => {
-      assert.equal(checkForWin(), true);
-    });
-    it('should detect a win', () => {
-      ticTacToe(0, 0)
-      ticTacToe(0, 1)
-      ticTacToe(1, 1)
-      ticTacToe(0, 2)
-      ticTacToe(2, 2)
       assert.equal(checkForWin(), true);
     });
   });
