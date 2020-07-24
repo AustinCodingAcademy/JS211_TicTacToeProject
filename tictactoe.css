@@ -5,3 +5,7 @@ td{
   border: 5px solid black;
   font-size: 100px;
 }
+
+.turn {
+  height: 60px;
+}
