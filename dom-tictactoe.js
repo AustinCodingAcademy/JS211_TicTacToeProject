@@ -30,12 +30,12 @@ const addMarker = (id) => {
   console.log(`We'll place a mark on square: ${id}`)
   // @TODO, Mix & Match. 
   // You will need the following pieces:
-
+ 
   // = currentMarker
   // .getElementById(id)
   // document
   // .innerHTML 
-
+  document.getElementById(id).innerHTML=currentMarker;
   // Arrange the above pieces into one a single line of code
   // to add an X or O to the board to the DOM so it can be scene on the screen.
 }
