@@ -16,7 +16,7 @@
 1. Use a whiteboard to work out a solution. HOW DOES TIC, TAC, TOE actually work in excruciating detail?
 1. Translate the broad ideas to pseudo code
 1. Convert the pseudo code to real JavaScript Code
-1. Add the the JavaScript code you've come up with one step at a time in `main.js`
+1. Add the JavaScript code you've come up with one step at a time in `main.js`
 1. Work through your bugs.
 1. Use `node main.js` to run the game + `ctrl + c` to escape.
 1. Achieve green checks for each of your unit tests.
