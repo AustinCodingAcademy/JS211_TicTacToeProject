@@ -10,7 +10,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-// creates and empty "board" for the user to see where marks can be placed.
+// creates an empty "board" for the user to see where marks can be placed
 // using let because the variable is expected to change with more 'X's and 'O's to add
 let board = [
   [' ', ' ', ' '],
@@ -22,7 +22,7 @@ let board = [
 // using let because the variable is expected to change from 'X' to 'O' and back
 let playerTurn = 'X';
 
-// is a function that print the current status of the board using the variable - board
+// is a function that prints the current status of the board using the variable - board
 const printBoard = () => {
   console.log('   0  1  2');
   console.log('0 ' + board[0].join(' | '));
@@ -45,7 +45,7 @@ const diagonalWin = () => {
 }
 
 const checkForWin = () => {
-  // Your code here call each of the check for types of wins
+  // Your code here to call each of the check for types of wins
 }
 
 const ticTacToe = (row, column) => {
@@ -66,7 +66,7 @@ const getPrompt = () => {
 
 
 // Unit Tests
-// You use them run the command: npm test main.js
+// to use them run the command: npm test main.js
 // to close them ctrl + C
 if (typeof describe === 'function') {
 
