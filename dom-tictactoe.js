@@ -7,7 +7,7 @@
 // 3. Look for the @TODO, to fix
 // next to each @TODO you will find tasks that need to be finished
 // 4. GET THIS GAME WORKING!!
-
+let turn = 0;
 let currentMarker = 'X'
 let board = [
   ['','',''],
@@ -22,7 +22,7 @@ const handleClick = (element) => {
   if(!document.getElementById(element.id).innerHTML){
     addMarker(element.id)
     updateBoard(element.id)
-    checkForWin()
+    changeMarker()
   }
 }
 
@@ -30,7 +30,7 @@ const addMarker = (id) => {
   console.log(`We'll place a mark on square: ${id}`)
   // @TODO, Mix & Match. 
   // You will need the following pieces:
-  
+  document.getElementById(id).innerHTML = currentMarker
   // = currentMarker
   // .getElementById(id)
   // document
@@ -45,6 +45,12 @@ const updateBoard = (id) => {
   // parses the id string into a number then captures the first and last part of the newly created number as row & column
   const row = parseInt(id.charAt(0))
   const column = parseInt(id.charAt(2)) 
+  board[row][column] = currentMarker
+  addMarker(id)
+  turn++;
+  if (turn >= 5) {
+    checkForWin()
+  }
 
   console.log(`you clicked the sq at ${row} and ${column}`)
   console.log(board)
@@ -57,23 +63,45 @@ const checkForWin = () => {
   // calls each checkForWin possibility and if any are true gives a page alert,
   if(horizontalWin() || verticalWin() || diagonalWin()) {
     // **BONUS** you could make the dismissal of this alert window reset the board...
-    window.alert(`Player ${currentMarker} won!`)
-  } else {
-    // if no win, change the marker from X to O, or O to X for the next player.
-    changeMarker()
+    window.alert(`Player ${currentMarker} won! `)
   }
 }
 
 const horizontalWin = () => {
   // @TODO, Your code here: to check for horizontal wins
+  if ((board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") || (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")) {
+    return true
+  } else if ((board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X") || (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O")) {
+    return true
+  } else if ((board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X") || (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")) { 
+    return true
+  } else {
+    return false
+  }
 }
 
 const verticalWin = () => {
   // @TODO, Your code here: to check for vertical wins
+  if((board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") || (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")) {
+    return true
+  } else if ((board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X") || (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")) {
+    return true
+  } else if ((board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X") || (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")) {
+    return true
+  } else {
+    return false
+  }
 }
 
 const diagonalWin = () => {
   // @TODO, Your code here: to check for diagonal wins
+  if ((board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") || (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")) {
+    return true
+  } else if ((board[0][2] == "X" && board[1][1] == "X" && board[2][0] == "X") || (board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O")){
+    return true
+  } else {
+    return false
+  } 
 }
 
 const changeMarker = () => {
@@ -88,10 +116,12 @@ const resetBoard = () => {
   // collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp  
   const squares = document.getElementsByTagName("TD")
   
+  
   // loops over the HTML Collections and clears out the Xs and Os
   for (i=0; i<squares.length; i++) {
     console.log(squares[i])
     squares[i].innerHTML = null
+    
   }
   
   // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
