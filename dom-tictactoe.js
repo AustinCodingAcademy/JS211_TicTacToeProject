@@ -28,14 +28,15 @@ const handleClick = (element) => {
 
 const addMarker = (id) => {
   console.log(`We'll place a mark on square: ${id}`)
-  // @TODO, Mix & Match. 
+  document.getElementById(id).innerHTML = currentMarker;
+  // @TODO, Mix & Match.
   // You will need the following pieces:
-  
+
   // = currentMarker
   // .getElementById(id)
   // document
-  // .innerHTML 
-  
+  // .innerHTML
+
   // Arrange the above pieces into a single line of code
   // to add an X or O to the board to the DOM so it can be scene on the screen.
 }
@@ -44,7 +45,7 @@ const addMarker = (id) => {
 const updateBoard = (id) => {
   // parses the id string into a number then captures the first and last part of the newly created number as row & column
   const row = parseInt(id.charAt(0))
-  const column = parseInt(id.charAt(2)) 
+  const column = parseInt(id.charAt(2))
 
   console.log(`you clicked the sq at ${row} and ${column}`)
   console.log(board)
@@ -66,14 +67,47 @@ const checkForWin = () => {
 
 const horizontalWin = () => {
   // @TODO, Your code here: to check for horizontal wins
+  if (
+    (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') ||
+    (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') ||
+    (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') ||
+    (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O') ||
+    (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O') ||
+    (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O')
+      ) {
+    return true;
+  }
+
 }
 
 const verticalWin = () => {
   // @TODO, Your code here: to check for vertical wins
+  if (
+
+    (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') ||
+    (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') || //or
+    (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') || //or
+    (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O') ||
+    (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O') || //or
+    (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')
+    // (board[0][0] == board [1][0] && board[0][0] == board[2][0]) || //or
+    // (board[0][1] == board [1][1] && board[0][1] == board[2][1]) ||
+    // (board[0][2] == board [1][2] && board[0][2] == board[2][2])
+  ) {
+    return true;
+  }
 }
 
 const diagonalWin = () => {
   // @TODO, Your code here: to check for diagonal wins
+  if (
+    (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') ||
+    (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X') ||
+    (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') ||
+    (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')
+  ) {
+    return true;
+  }
 }
 
 const changeMarker = () => {
@@ -85,15 +119,15 @@ const resetBoard = () => {
   // sanity check: this tells us the function is being called
   console.log("the board was cleared!")
 
-  // collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp  
+  // collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp
   const squares = document.getElementsByTagName("TD")
-  
+
   // loops over the HTML Collections and clears out the Xs and Os
   for (i=0; i<squares.length; i++) {
     console.log(squares[i])
     squares[i].innerHTML = null
   }
-  
+
   // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
 }
 
